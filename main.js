@@ -5,10 +5,15 @@ function Book(title, author, pages){
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.isRead = true;
     this.id = crypto.randomUUID();
     //has to return the book obj 
     //so that in addbook() it adds that obj to the array
 }
+
+Book.prototype.toggleStatus = function(){
+    this.isRead = !this.isRead;
+};
 
 function addBookToLibrary(title, author, pages){
     //create a book from those arguments, 
@@ -42,14 +47,22 @@ function display(){
         const remove = document.createElement("button");
         remove.classList.add("remove-data");
         remove.textContent = "Remove";
+
         remove.addEventListener('click', (e) =>{
             const ele = e.target.parentElement;
             const bookId = ele.getAttribute("data-id");
             removeBookFromLibrary(bookId);
             display();
         });
+
+        const status = document.createElement("button");
+        status.textContent = `${myLibrary[i].isRead ? "Read" : "Not Read"}`;
+        status.addEventListener('click', ()=> {
+            myLibrary[i].toggleStatus();
+            display();
+        });
         card.setAttribute("data-id", myLibrary[i].id);
-        card.append(bookTitle, bookAuthor, bookPages, remove);
+        card.append(bookTitle, bookAuthor, bookPages, remove, status);
         container.append(card);
     }
 }
