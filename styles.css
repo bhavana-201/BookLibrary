@@ -16,12 +16,13 @@ nav{
 }
 #new{
     text-decoration: none;
-    border:none;
+    padding: 1rem;
+    text-align: center;
+    border: 2px solid #2563eb;
+    border-radius: 10px;
     background-color: white;
     font-weight: bold;
-    font-size: medium;
-    max-height:  2rem;
-   
+    font-size: medium;   
 }
 #new:hover{
     color: #2563eb;
@@ -44,4 +45,40 @@ h1{
     justify-content: center;
     align-items: center;
     padding-top: 80px
+}
+dialog{
+    padding: 2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+}
+#form-submit{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem;
+}
+.form-colOne, .form-colTwo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 10px;
+}
+#book-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.book-card{
+    background: rgb(254, 255, 240);
+    border: 2px solid #2563eb;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    width: 250px;
+    text-align: left;
 }

@@ -12,26 +12,33 @@
 <body>
     <nav>
             <h1>Library</h1>
-            <dialog>
+            <button id="new">New Book</button>
+    </nav>
+    <dialog>
                 <button id="closeBtn" autofocus>X</button>
                 <p>Add a New Book</p>
                 <form id="form-submit">
-                    <label>Title</label>
-                    <input type="text" id="title" name="book-title" value="">
-                    <label>Author</label>
-                    <input type="text" id="author" name="book-author">
-                    <label>Pages</label>
-                    <input type="text" id="pages" name="book-pages">
-                    <button type="submit" >Add</button>
-                    
+                    <div class="form-colOne">
+                        <label>Title</label>
+                        <label>Author</label>
+                        <label>Pages</label>
+
+                    </div>
+                    <div class="form-colTwo">
+                        <input type="text" id="title" name="book-title" value="">
+                        <input type="text" id="author" name="book-author">
+                        <input type="text" id="pages" name="book-pages">
+
+                    </div>
                 </form>
-            </dialog>
-            <button id="new">New Book</button>
-    </nav>
-    
+                <button type="submit" id="submit" >Add</button>
+
+    </dialog>
     <div id="main">
         <div id="divider"></div>
-        <div id="book-container"></div>
+        <div id="book-container">
+            
+        </div>
     </div>
     
 </body>

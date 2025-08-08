@@ -28,20 +28,40 @@ function display(){
         //create new elements for every book
         //add data to that element
         const card = document.createElement("div");
+        card.classList.add("book-card");
         container.appendChild(card);
-        const bookTitle = document.createElement("h3");
+        const bookTitle = document.createElement("h2");
         bookTitle.textContent = myLibrary[i].title;
 
-        const bookAuthor = document.createElement("h5");
+        const bookAuthor = document.createElement("h3");
         bookAuthor.textContent = myLibrary[i].author;
 
         const bookPages = document.createElement("p");
         bookPages.textContent = `${myLibrary[i].pages} pages`;
 
-        container.append(bookTitle, bookAuthor, bookPages);
+        const remove = document.createElement("button");
+        remove.classList.add("remove-data");
+        remove.textContent = "Remove";
+        remove.addEventListener('click', (e) =>{
+            const ele = e.target.parentElement;
+            const bookId = ele.getAttribute("data-id");
+            removeBookFromLibrary(bookId);
+            display();
+        });
+        card.setAttribute("data-id", myLibrary[i].id);
+        card.append(bookTitle, bookAuthor, bookPages, remove);
+        container.append(card);
     }
 }
 display();
+
+
+
+function removeBookFromLibrary(bookId){
+    const ind = myLibrary.findIndex( book => book.id === bookId);
+    myLibrary.splice(ind, 1);
+
+}
 
 const dialog = document.querySelector('dialog');
 const showForm = document.getElementById('new');
@@ -56,11 +76,14 @@ closeDialog.addEventListener("click", () => {
 });
 
 const form = document.getElementById("form-submit");
-form.addEventListener('click', (e) => {
+const submit = document.getElementById("submit");
+submit.addEventListener('click', (e) => {
     e.preventDefault();
+    
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     addBookToLibrary(title, author, pages);
     display();
+    
 });
